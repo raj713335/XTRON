@@ -1,12 +1,21 @@
-from flask import Flask, render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+
+try:
+    from flask import Flask
+    from flask import redirect,url_for,request,render_template
+    from flask_wtf.file import FileField
+    from wtforms import SubmitField
+    from flask_wtf import Form
+    import sqlite3
+    print("All Modules Loaded properly ....")
+except:
+    print("Some Modules are missing ....")
+
 
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
-db = SQLAlchemy(app)
+app.config["SECRET_KEY"] = 'secret'
+
 
 
 
@@ -43,7 +52,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/form')
+@app.route('/form',methods=["GET","POST"])
 def form():
     return render_template('form.html')
 
