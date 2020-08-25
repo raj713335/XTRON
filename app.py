@@ -21,6 +21,16 @@ class Upload_Chest_Xray(Form):
     submit = SubmitField("submit")
 
 
+def patient_database(name,data):
+    conn=sqlite3.connect("PATIENT_DB")
+    cursor=conn.cursor()
+    cursor.execute("""CREATE TABLE IF NOT EXISTS demo_table (name TEXT,data BLOB)""")
+    cursor.execute(("""INSERT INTO demo_table (name,data) VALUES (?,?) """,(name,data))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+
 
 
 
@@ -63,6 +73,7 @@ def form():
     if request.method=="POST":
         if form.validate_on_submit():
             file_name=form.file.data
+            patient_database(name=file_name.filename,data=file_name.read())
             print("FILE : {}".format((file_name.filename)))
             return render_template('form.html',form=form)
     return render_template('form.html',form=form)
