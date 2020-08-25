@@ -25,7 +25,7 @@ def patient_database(name,data):
     conn=sqlite3.connect("PATIENT_DB")
     cursor=conn.cursor()
     cursor.execute("""CREATE TABLE IF NOT EXISTS demo_table (name TEXT,data BLOB)""")
-    cursor.execute(("""INSERT INTO demo_table (name,data) VALUES (?,?) """,(name,data))
+    cursor.execute("""INSERT INTO demo_table (name,data) VALUES (?,?) """,(name,data))
     conn.commit()
     cursor.close()
     conn.close()
