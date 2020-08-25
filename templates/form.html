@@ -23,6 +23,7 @@
 
   </header><!-- End Header -->
 
+ <form class="" action="{{ url_for('form') }}" method="POST" enctype="multipart/form-data">
     <section id="contact" class="contact">
       <div class="container">
 
@@ -42,18 +43,31 @@
 
 <!--                      <input class="text-center" type="submit">-->
 <!--                    </form>-->
+
+
+
+
 					<div id="wrapper">
 						<div id="image-holder" class="text-center">
 							<img id="image_output" src="../static/img/back_x.gif" style="max-width:100%; height:375px; max-height:375px;" />
 						</div>
 						<!--    <input id="fileUpload" type="file" /> -->
 						<br>
+
+                      {{ form.hidden_tag() }}
+<!--                      {{ form.file(class="upload-btn-wrapper.img-fluid") }}-->
+<!--                      {{ form.submit(for="file") }}-->
 						<div class="upload-btn-wrapper">
-							<input class="img-fluid" type="file" id="file" accept="image/*" onchange="image_preview(event)">
+							<input class="img-fluid"  type="file" id="file" accept="image/*" onchange="image_preview(event)" name="file">
 							<label for="file">Upload an Image</label>
 						</div>
 						<br>
 					</div>
+<!--              </form>-->
+
+
+
+
                 </div>
 			</div>
 
@@ -62,7 +76,8 @@
           </div>
           <div class="col-lg-6">
 		  <br>
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+<!--            <form action="forms/contact.php" method="post" role="form" class="php-email-form">-->
+            <div class="php-email-form">
               <div class="form-row">
                 <div class="col-md-6 col-md-6 col-sm-6 col-6 form-group">
                   <input type="text" name="name" class="form-control form-control-sm" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -207,20 +222,22 @@
                 <div class="error-message"></div>
                 <div class="sent-message">Your data sent for processing . Thank you !</div>
               </div>
-              <div class="text-center"><button class="btn btn-site-theme btn-block" type="submit">SUBMIT</button></div>
-            </form>
+              <div class="text-center"><button class="btn btn-site-theme btn-block" type="submit" name="submit">SUBMIT</button></div>
+
           </div>
 
+        </div>
         </div>
 
       </div>
     </section>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+</form>
 
   <!-- Template Main JS File -->
   <script src="static/js/main.js"></script>
