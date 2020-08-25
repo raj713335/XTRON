@@ -57,8 +57,8 @@ def patient_database(name,data):
 
 
 
-    def __repr__(self):
-        return 'Patient Data ' + str(self.id)
+#    def __repr__(self):
+#        return 'Patient Data ' + str(self.id)
 
 
 
